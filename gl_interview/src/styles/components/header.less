@@ -1,0 +1,45 @@
+.gli-header{
+    width: 100%;
+    height: @header-height;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: @border-M @border-color-black solid;
+
+    .gli-header-logo{
+        width: 2* @header-height;
+        height: @header-height;
+        margin-left: @margin-L;
+    }
+    .gli-header-menu-list{
+        flex: 1;
+        margin: 0 20 * @margin-L;
+        display: flex;
+        align-items: center;
+        height: @header-height;
+
+        :hover {
+            background: #eeeeee;
+        }
+        .header-menu-titles{
+            color: @theme-color1;
+            display: inline-block;
+            margin: 0 @margin-M; 
+            padding: @padding-SS;           
+            cursor: pointer;
+            
+            
+            &.default{
+                border: none;
+            }
+            &.selected{
+                font-weight: bold;
+                border-bottom: @border-M @theme-color2 solid;
+            }
+        }
+    }
+    .gli-header-langBtn{
+        margin-right: @margin-M;
+        cursor: pointer;
+    }
+}
