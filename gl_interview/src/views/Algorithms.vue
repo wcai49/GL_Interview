@@ -1,10 +1,10 @@
 <template>
-  <div class="home"></div>
+  <div class="algorithms-page"></div>
 </template>
 
 <script>
 export default {
-  name: "Index",
+  name: "Algorithms",
   components: {},
 };
 </script>

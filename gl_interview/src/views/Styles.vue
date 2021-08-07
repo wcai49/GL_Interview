@@ -1,10 +1,10 @@
 <template>
-  <div class="home"></div>
+  <div class="styles-page"></div>
 </template>
 
 <script>
 export default {
-  name: "Index",
+  name: "Styles",
   components: {},
 };
 </script>

@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import indexPage from '../views/Index.vue';
+// 5 TOP index pages: index, ilearn, style playground, and algorithm playground;
+import indexPage from "../views/Index.vue";
+import iLearnPage from "../views/iLearn.vue";
+import stylesPage from "../views/Styles.vue";
+import algorithmsPage from "../views/Algorithms.vue";
+
 const routes = [
   {
     path: "/",
@@ -9,7 +14,22 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     // component: () =>
     //   import(/* webpackChunkName: "Index" */ "../views/Index.vue"),
-    component: indexPage
+    component: indexPage,
+  },
+  {
+    path: "/iLearnPage",
+    name: "iLearn",
+    component: iLearnPage,
+  },
+  {
+    path: "/stylesPage",
+    name: "styles",
+    component: stylesPage,
+  },
+  {
+    path: "/algorithmsPage",
+    name: "algorithms",
+    component: algorithmsPage,
   },
 ];
 

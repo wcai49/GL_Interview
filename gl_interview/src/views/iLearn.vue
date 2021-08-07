@@ -1,10 +1,10 @@
 <template>
-  <div class="home"></div>
+  <div class="iLearn-page"></div>
 </template>
 
 <script>
 export default {
-  name: "Index",
+  name: "iLearn",
   components: {},
 };
 </script>
