@@ -1,7 +1,8 @@
 <template>
-  <router-view>
-    <vheader></vheader>
-  </router-view>
+  <div>
+  <vheader></vheader>
+  <router-view class="view-pages"></router-view>
+  </div>
 </template>
 
 <script>
@@ -15,7 +16,9 @@ export default {
 </script>
 
 <style lang="less">
-body {
+
+html, body, #app {
+  height: 100%;
   margin: 0;
   font-family: Georgia;
 }
