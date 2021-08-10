@@ -1,5 +1,21 @@
 <template>
   <div class="algorithms-page layout-center">
+    <div class="algorithms-playground">
+      <div class="algorithms-recent-hard">
+        Findout whether the LinkedList is a looped one or not. This is easy. Try
+        to make it runnable in your project. So you will have to write a
+        linkedlist class, node class etc.,
+      </div>
+      <div class="playground-container">
+        <div class="playground-left">CODE AREA</div>
+        <div class="playground-right">
+          <div class="playground-right-figure">
+            <img class="playgroun-figure" src="/circularlinkedlist.png" />
+          </div>
+          <div class="playground-right-result">Result: {{ result }}</div>
+        </div>
+      </div>
+    </div>
     <div class="algorithms-container">
       <div
         class="algorithms-categories"
@@ -32,10 +48,6 @@ export default {
         {
           name: "Double Pointers",
           img: "./DoublePointers_Entry.png",
-        },
-        {
-          name: "Hash Map",
-          img: "./HashMap_Entry.png",
         },
         {
           name: "Dynamic Programming",

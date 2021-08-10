@@ -1,23 +1,71 @@
 .algorithms-page{
+    .algorithms-playground{
+        height: 25rem;
+        width: 100%;
+        background: @theme-color3;
+        padding-top: @padding-S;
+        display: flex;
+        flex-direction: column;
+
+        .algorithms-recent-hard{
+            color: @theme-color2;
+            font-size: @font-size-L;
+            border-bottom: @border-S @theme-color2 dashed;
+            padding-bottom: @padding-S;
+            text-align: center;
+
+        }
+        .playground-container{
+            flex: 1;
+            display: flex;
+            padding: @padding-S;
+            .playground-left{
+                width: 60%;
+                height: 100%;
+            }
+            .playground-right{
+                width: 40%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                .playground-right-figure{
+                    
+                    text-align: center;
+                    .playground-figure{
+                        border-radius: 20% 20%;
+                    }
+                }
+                .playground-right-result{
     
+                }
+            }
+        }
+        
+    }
     .algorithms-container{
         display:  flex;
         justify-content: space-between;
-        margin: @margin-L;
+        margin-top: @margin-L;
+        padding-top: @padding-M;
+        background: @theme-color2;
+        border: @border-S @theme-color4 solid;
          .algorithms-categories{
              cursor: pointer;
+             
              .algorithms-categories-title{
-                 font-size: @font-size-XL;
-                 font-weight: bold;
+                font-size: @font-size-XL;
+                font-weight: bold;
+                text-align: center;
+                color: @theme-color4;
 
              }
             .algorithms-categories-img{
-                width: 20rem;
-                height: 14rem;
+                width: 23.2rem;
+                height: 11.1rem;
+                margin: @margin-M;
             }
          }
         
     }
      
 }
-    

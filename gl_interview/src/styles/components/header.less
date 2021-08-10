@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: @border-M @border-color-black solid;
+    background: @theme-color1;
 
     .gli-header-logo{
         width: 2* @header-height;
@@ -17,18 +18,18 @@
         display: flex;
         align-items: center;
         height: @header-height;
-
-        :hover {
-            background: #eeeeee;
-        }
         .header-menu-titles{
-            color: @theme-color1;
+            color: @theme-color4;
             display: inline-block;
             margin: 0 @margin-M; 
             padding: @padding-SS;           
             cursor: pointer;
             text-decoration: none;
-            
+            &:hover {
+                background: @theme-color4;
+                color: @theme-color1;
+                
+            }
             &.default{
                 border: none;
             }
@@ -41,5 +42,6 @@
     .gli-header-langBtn{
         margin-right: @margin-M;
         cursor: pointer;
+        color: @theme-color4;
     }
 }
