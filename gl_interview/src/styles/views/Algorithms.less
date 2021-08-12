@@ -1,7 +1,6 @@
 .algorithms-page{
     .algorithms-playground{
-        height: 25rem;
-        width: 100%;
+        height: calc(100vh - 2*@header-height);
         background: @theme-color3;
         padding-top: @padding-S;
         display: flex;
@@ -29,15 +28,56 @@
                 display: flex;
                 flex-direction: column;
                 .playground-right-figure{
-                    
-                    text-align: center;
-                    .playground-figure{
-                        border-radius: 20% 20%;
+                    background: @theme-color4;
+                    flex: 1;
+                }
+                .playground-right-input{
+                    margin-top: @margin-S;
+                    font-size: @font-size-M;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .playground-input-textarea{
+                        background: @theme-color4;
+                        resize: none;
+                        height: @font-size-M;
+                        line-height: @font-size-M;
                     }
                 }
-                .playground-right-result{
-    
+                .playground-command-area{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: @margin-S;
+
+                    .playground-right-result{
+                        font-size: @font-size-M;
+                        font-weight: bold;
+                        display: inline-block;
+                        width: 30%;
+
+                        p{
+                            display: inline-block;
+                            margin-left: @margin-S;
+                            color: @theme-color2;
+                            font-weight: bold;
+                        }
+                    }
+                    .playground-run-btn{
+                        background: @theme-color2;
+                        border-radius: 5% 5%;
+                        cursor: pointer;
+                        display: inline-block;
+                        color: @theme-color4;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 8rem;
+                        height: 1.5rem;
+                    }
                 }
+                
             }
         }
         
@@ -60,8 +100,6 @@
 
              }
             .algorithms-categories-img{
-                width: 23.2rem;
-                height: 11.1rem;
                 margin: @margin-M;
             }
          }

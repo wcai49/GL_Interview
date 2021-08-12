@@ -9,14 +9,29 @@
       <div class="playground-container">
         <div class="playground-left">CODE AREA</div>
         <div class="playground-right">
-          <div class="playground-right-figure">
-            <img class="playgroun-figure" src="/circularlinkedlist.png" />
+          <div class="playground-right-figure"></div>
+          <div class="playground-right-input">
+            <div>List:</div>
+            <textarea
+              class="playground-input-textarea"
+              :value="input.head"
+            ></textarea>
+            <div>Loop Index:</div>
+            <textarea
+              class="playground-input-textarea"
+              v-model="input.pos"
+            ></textarea>
           </div>
-          <div class="playground-right-result">Result: {{ result }}</div>
+          <div class="playground-command-area">
+            <div class="playground-right-result">Result: <p>{{ result }}</p></div>
+            <div class="playground-run-btn" @click="createList(input.head)">
+              Run
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="algorithms-container">
+    <!-- <div class="algorithms-container">
       <div
         class="algorithms-categories"
         v-for="(item, index) of categories"
@@ -25,16 +40,23 @@
         <div class="algorithms-categories-title">{{ item.name }}</div>
         <img class="algorithms-categories-img" :src="item.img" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
+import ListNode from "../classes/ListNode.js";
+// import LinkedList from "../classes/LinkedList.js";
+
 export default {
   name: "Algorithms",
   components: {},
   data() {
     return {
+      input: {
+        head: [1, 2, 3, 4, 5, 6, 7],
+        pos: 2,
+      },
       result: null,
       categories: [
         {
@@ -55,6 +77,50 @@ export default {
         },
       ],
     };
+  },
+  mounted() {},
+  methods: {
+    createList(head) {
+      if(head.length < this.input.pos){
+        this.result = 'error';
+        return;
+      }
+      let startNode = new ListNode(-1);
+      let helper = startNode;
+
+      for (let i = 0; i < head.length; i++) {
+        let nextNode = new ListNode(head[i]);
+        helper.next = nextNode;
+        helper = nextNode;
+      }
+
+      if (this.input.pos >= 0) {
+        console.log('hi');
+        let index = this.input.pos;
+        let indexNode;
+        while (index >= 0) {
+          indexNode = startNode.next;
+          index--;
+        }
+        helper.next = indexNode;
+      }
+      this.checkLoop(startNode.next);
+    },
+    checkLoop(node) {
+      let slow = node;
+      let fast = node;
+
+      while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (fast == slow) {
+          this.result = true;
+          return;
+        }
+      }
+      this.result = false;
+      return;
+    },
   },
 };
 </script>
