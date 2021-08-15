@@ -1,5 +1,5 @@
 <template>
-  <div class="algorithms-page layout-center">
+  <div class="algorithms-page">
     <div class="algorithms-playground">
       <div class="algorithms-recent-hard">
         Findout whether the LinkedList is a looped one or not. This is easy. Try
@@ -23,7 +23,10 @@
             ></textarea>
           </div>
           <div class="playground-command-area">
-            <div class="playground-right-result">Result: <p>{{ result }}</p></div>
+            <div class="playground-right-result">
+              Result:
+              <p>{{ result }}</p>
+            </div>
             <div class="playground-run-btn" @click="createList(input.head)">
               Run
             </div>
@@ -81,8 +84,8 @@ export default {
   mounted() {},
   methods: {
     createList(head) {
-      if(head.length < this.input.pos){
-        this.result = 'error';
+      if (head.length < this.input.pos) {
+        this.result = "error";
         return;
       }
       let startNode = new ListNode(-1);
@@ -95,7 +98,7 @@ export default {
       }
 
       if (this.input.pos >= 0) {
-        console.log('hi');
+        console.log("hi");
         let index = this.input.pos;
         let indexNode;
         while (index >= 0) {

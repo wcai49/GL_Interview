@@ -12,6 +12,27 @@ export default {
   components: {
     vheader,
   },
+  // mounted(){
+  //   let currentPath = this.$route.path;
+  //   switch(currentPath){
+  //     case "/":
+  //       vheader.currentSelect = 0;
+  //       break;
+  //     case "/iLearnPage":
+  //       vheader.currentSelect = 1;
+  //       break;
+  //     case "/stylesPage":
+  //       vheader.currentSelect = 2;
+  //       break;
+  //     case "/algorithmsPage":
+  //       vheader.currentSelect = 3;
+  //       break;
+  //     default:
+  //       vheader.currentSelect = 0;
+  //       break;
+  //   }
+  //   vheader.selectMenu(vheader.currentSelect);
+  // }
 };
 </script>
 

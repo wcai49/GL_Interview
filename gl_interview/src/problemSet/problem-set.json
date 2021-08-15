@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Reverse a linked list",
+        "category": "Linked List",
+        "discription": "Linked lists are normal to see. Now we have a simple Linked List: 1->2->3->4->5, provide a function to reverse it, make it looks like 5->4->3->2->1.",
+        "reference": "Microsoft, Bing Team",
+        "date": "2021/08/13"
+    },
+    {
+        "title": "Looped Linked List",
+        "category": "Linked List",
+        "discription": "Findout whether the LinkedList is a looped one or not. This is easy. Try to make it runnable in your project. So you will have to write a linkedlist class, node class etc.,",
+        "reference": "Microsoft, HomePage Team",
+        "date": "2021/08/13"
+    }
+]
