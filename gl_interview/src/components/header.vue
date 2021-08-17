@@ -25,13 +25,13 @@ export default {
       currentSelect: 0,
       menus: [
         {
-          title: "Index",
+          title: "Me Myself",
           path: "/",
         },
-        {
-          title: "iLearn",
-          path: "/iLearnPage",
-        },
+        // {
+        //   title: "iLearn",
+        //   path: "/iLearnPage",
+        // },
         {
           title: "Styles",
           path: "/stylesPage",
