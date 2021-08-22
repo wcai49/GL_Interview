@@ -2,7 +2,7 @@
   <div class="index-self-page">
     <el-container>
       <el-header>
-        <vheader></vheader>
+        <vheader :currentIndex="0"></vheader>
       </el-header>
       <el-main>
         <div class="index-main-area"></div>

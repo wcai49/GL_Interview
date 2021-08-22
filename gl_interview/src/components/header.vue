@@ -7,7 +7,7 @@
         :key="index"
         @click="selectMenu(index)"
         class="header-menu-titles"
-        :class="currentSelect == index ? 'selected' : 'default'"
+        :class="currentIndex == index ? 'selected' : 'default'"
         :to="item.path"
       >
         {{ item.title }}
@@ -20,9 +20,14 @@
 <script>
 export default {
   name: "vheader",
+  props: {
+    currentIndex: {
+      type: Number,
+      default: 0,
+    },
+  },
   data() {
     return {
-      currentSelect: 0,
       menus: [
         {
           title: "Me Myself",
@@ -45,8 +50,7 @@ export default {
   },
   methods: {
     selectMenu(index) {
-      if (this.currentSelect == index) return;
-      this.currentSelect = index;
+      if (this.currentIndex == index) return;
     },
   },
 };

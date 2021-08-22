@@ -1,40 +1,49 @@
 <template>
   <div class="algorithms-page">
-    <div class="algorithms-playground">
-      <div class="algorithms-recent-hard">
-        Findout whether the LinkedList is a looped one or not. This is easy. Try
-        to make it runnable in your project. So you will have to write a
-        linkedlist class, node class etc.,
-      </div>
-      <div class="playground-container">
-        <div class="playground-left">CODE AREA</div>
-        <div class="playground-right">
-          <div class="playground-right-figure"></div>
-          <div class="playground-right-input">
-            <div>List:</div>
-            <textarea
-              class="playground-input-textarea"
-              :value="input.head"
-            ></textarea>
-            <div>Loop Index:</div>
-            <textarea
-              class="playground-input-textarea"
-              v-model="input.pos"
-            ></textarea>
-          </div>
-          <div class="playground-command-area">
-            <div class="playground-right-result">
-              Result:
-              <p>{{ result }}</p>
+    <el-container>
+      <el-header>
+        <vheader :currentIndex="2"></vheader>
+      </el-header>
+      <el-main>
+        <div class="algorithm-main-area">
+          <div class="algorithms-playground">
+            <div class="algorithms-recent-hard">
+              Findout whether the LinkedList is a looped one or not. This is
+              easy. Try to make it runnable in your project. So you will have to
+              write a linkedlist class, node class etc.,
             </div>
-            <div class="playground-run-btn" @click="createList(input.head)">
-              Run
+            <div class="playground-container">
+              <div class="playground-left">CODE AREA</div>
+              <div class="playground-right">
+                <div class="playground-right-figure"></div>
+                <div class="playground-right-input">
+                  <div>List:</div>
+                  <textarea
+                    class="playground-input-textarea"
+                    :value="input.head"
+                  ></textarea>
+                  <div>Loop Index:</div>
+                  <textarea
+                    class="playground-input-textarea"
+                    v-model="input.pos"
+                  ></textarea>
+                </div>
+                <div class="playground-command-area">
+                  <div class="playground-right-result">
+                    Result:
+                    <p>{{ result }}</p>
+                  </div>
+                  <div
+                    class="playground-run-btn"
+                    @click="createList(input.head)"
+                  >
+                    Run
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="algorithms-container">
+          <!-- <div class="algorithms-container">
       <div
         class="algorithms-categories"
         v-for="(item, index) of categories"
@@ -44,16 +53,20 @@
         <img class="algorithms-categories-img" :src="item.img" />
       </div>
     </div> -->
+        </div>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
 <script>
 import ListNode from "../classes/ListNode.js";
+import vheader from "../components/header.vue";
 // import LinkedList from "../classes/LinkedList.js";
 
 export default {
   name: "Algorithms",
-  components: {},
+  components: { vheader },
   data() {
     return {
       input: {

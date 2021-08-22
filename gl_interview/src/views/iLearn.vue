@@ -2,9 +2,9 @@
   <div class="iLearn-page">
     <div
       class="problem-detail"
-      :class="showDetail ? detail - show : detail - hide"
+      :class="showDetail ? 'detail-show' : 'detail-hide'"
     >
-      <div class="detail-title">{{ showProblem.title }}</div>
+      <div class="detail-title">{{ bshowProblem.title }}</div>
       <div class="detail-discription">{{ showProblem.discription }}</div>
       <div class="detail-reference">{{ showProblem.reference }}</div>
       <div class="solution"></div>
