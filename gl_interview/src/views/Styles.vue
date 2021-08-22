@@ -9,7 +9,7 @@
             <textarea id="css" v-model="cssContent"></textarea>
             <textarea id="js" v-model="javascriptContent"></textarea>
           </div>
-          <iframe id="style-display"></iframe>
+          <iframe id="codeResult"></iframe>
         </div>
       </el-main>
     </el-container>
@@ -21,20 +21,32 @@ import vheader from "../components/header.vue";
 export default {
   name: "Styles",
   components: { vheader },
-  data(){
-    return{
-      htmlContent: null,
-      cssContent: null,
-      javascriptContent: null,
-    }
+  mounted() {
+    this.compile();
   },
-  watch(){
-    console.log(this.htmlContent, this.cssContent, this.javascriptContent);
+  data() {
+    return {
+      htmlContent: "",
+      cssContent: "",
+      javascriptContent: "",
+    };
   },
   methods: {
-    compile(){
+    compile() {
+      let html = document.getElementById("html");
+      let css = document.getElementById("css");
+      let js = document.getElementById("js");
+      let code = document.getElementById("codeResult").contentWindow.document;
+      document.body.onkeyup = function () {
+        code.open();
 
-    }
-  }
+        code.writeln(
+          // eslint-disable-next-line
+          `${html.value}<style>${css.value}</style><script>${js.value}<\/script>`
+        );
+        code.close();
+      };
+    },
+  },
 };
 </script>
