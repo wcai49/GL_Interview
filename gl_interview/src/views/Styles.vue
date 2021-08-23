@@ -26,9 +26,16 @@ export default {
   },
   data() {
     return {
-      htmlContent: "",
-      cssContent: "",
-      javascriptContent: "",
+      htmlContent:
+        "<div class='name' id='name' onclick='myFunction()'>I am an idiot.</div>",
+      cssContent: `.name{    
+          color: #2c2c2c;    
+          font-size: 40px;    
+          text-align: center;    
+          font-weight: bold;}`,
+      javascriptContent: `function myFunction(){
+    window.alert('hi');
+}`,
     };
   },
   methods: {
