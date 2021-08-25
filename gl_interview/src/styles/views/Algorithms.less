@@ -23,6 +23,18 @@
             .playground-left{
                 width: 60%;
                 height: 100%;
+                margin-right: @margin-L;
+                display: flex;
+
+                .algorithm-code-input{
+                    width: 100%;
+                    resize: none;
+                    background: @theme-color1;
+                    color: @theme-color4;
+                    font-size: @font-size-M;
+                    line-height: @font-size-M;
+                    padding: @padding-M;
+                }
             }
             .playground-right{
                 width: 40%;
@@ -32,6 +44,7 @@
                 .playground-right-figure{
                     background: @theme-color4;
                     flex: 1;
+                    padding: @padding-M;
                 }
                 .playground-right-input{
                     margin-top: @margin-S;

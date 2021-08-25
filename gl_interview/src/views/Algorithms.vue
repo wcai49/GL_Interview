@@ -13,16 +13,32 @@
               write a linkedlist class, node class etc.,
             </div>
             <div class="playground-container">
-              <div class="playground-left">CODE AREA</div>
+              <div class="playground-left">
+                <textarea class="algorithm-code-input"></textarea>
+              </div>
               <div class="playground-right">
-                <div class="playground-right-figure"></div>
+                <div class="playground-right-figure">
+                  <div class="question-title">Problem:</div>
+                  <div class="question-desc">
+                    Given a Linked-List, it might or might not be a looped
+                    Linked-List. For example, if it a looped one, the last node
+                    of the list will randomly point to the previous node.
+                    Provide a function, return boolean value for whether it is
+                    looped or not.
+                  </div>
+                </div>
                 <div class="playground-right-input">
-                  <div>List:</div>
+                  <div>Input:</div>
                   <textarea
                     class="playground-input-textarea"
                     :value="input.head"
                   ></textarea>
-                  <div>Loop Index:</div>
+                  <div>Type</div>
+                  <select
+                    class="playground-input-textarea"
+                    v-model="input.type"
+                  ></select>
+                  <div>Loop</div>
                   <textarea
                     class="playground-input-textarea"
                     v-model="input.pos"
@@ -72,6 +88,7 @@ export default {
       input: {
         head: [1, 2, 3, 4, 5, 6, 7],
         pos: 2,
+        type: ['ListNode', 'TreeNode', 'Default']
       },
       result: null,
       categories: [
