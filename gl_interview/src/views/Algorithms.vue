@@ -14,7 +14,21 @@
             </div>
             <div class="playground-container">
               <div class="playground-left">
-                <textarea class="algorithm-code-input"></textarea>
+                <textarea class="algorithm-code-input" id="algorithmFunction">
+function checkLoop(node) {
+      let slow = node;
+      let fast = node;
+
+      while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (fast == slow) {
+          return true;
+        }
+      }
+      return false;
+    }</textarea
+                >
               </div>
               <div class="playground-right">
                 <div class="playground-right-figure">
@@ -25,6 +39,11 @@
                     of the list will randomly point to the previous node.
                     Provide a function, return boolean value for whether it is
                     looped or not.
+                  </div>
+                  <div class="question-desc">Example:</div>
+                  <img src="/circularlinkedlist.png" />
+                  <div class="question-desc">
+                    result: true. Last node(4) points to previous node(2).
                   </div>
                 </div>
                 <div class="playground-right-input">
@@ -86,9 +105,9 @@ export default {
   data() {
     return {
       input: {
-        head: [1, 2, 3, 4, 5, 6, 7],
-        pos: 2,
-        type: ['ListNode', 'TreeNode', 'Default']
+        head: [3, 2, 0, 4],
+        pos: 1,
+        type: ["ListNode", "TreeNode", "Default"],
       },
       result: null,
       categories: [
@@ -128,7 +147,6 @@ export default {
       }
 
       if (this.input.pos >= 0) {
-        console.log("hi");
         let index = this.input.pos;
         let indexNode;
         while (index >= 0) {
@@ -137,23 +155,29 @@ export default {
         }
         helper.next = indexNode;
       }
-      this.checkLoop(startNode.next);
+      this.result = this.codeInput(startNode.next);
     },
-    checkLoop(node) {
-      let slow = node;
-      let fast = node;
+    codeInput(node) {
+      let js = document.getElementById("algorithmFunction").value;
+      let myFunc = new Function("(" + js + ")()");
+      console.log(node);
+      return myFunc();
+    },
+    // checkLoop(node) {
+    //   let slow = node;
+    //   let fast = node;
 
-      while (fast !== null && fast.next !== null) {
-        slow = slow.next;
-        fast = fast.next.next;
-        if (fast == slow) {
-          this.result = true;
-          return;
-        }
-      }
-      this.result = false;
-      return;
-    },
+    //   while (fast !== null && fast.next !== null) {
+    //     slow = slow.next;
+    //     fast = fast.next.next;
+    //     if (fast == slow) {
+    //       this.result = true;
+    //       return;
+    //     }
+    //   }
+    //   this.result = false;
+    //   return;
+    // },
   },
 };
 </script>
