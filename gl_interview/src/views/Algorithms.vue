@@ -15,9 +15,10 @@
             <div class="playground-container">
               <div class="playground-left">
                 <textarea class="algorithm-code-input" id="algorithmFunction">
-function checkLoop(node) {
-      let slow = node;
-      let fast = node;
+
+function checkLoop(head) {
+      let slow = head;
+      let fast = head;
 
       while (fast !== null && fast.next !== null) {
         slow = slow.next;
@@ -55,8 +56,12 @@ function checkLoop(node) {
                   <div>Type</div>
                   <select
                     class="playground-input-textarea"
-                    v-model="input.type"
-                  ></select>
+                    v-model="input.selected"
+                  >
+                    <option v-for="(item, index) of input.type" :key="index">
+                      {{ item }}
+                    </option>
+                  </select>
                   <div>Loop</div>
                   <textarea
                     class="playground-input-textarea"
@@ -110,6 +115,7 @@ export default {
         type: ["ListNode", "TreeNode", "Default"],
       },
       result: null,
+      myFunc: Function,
       categories: [
         {
           name: "Linked List",
@@ -159,9 +165,8 @@ export default {
     },
     codeInput(node) {
       let js = document.getElementById("algorithmFunction").value;
-      let myFunc = new Function("(" + js + ")()");
-      console.log(node);
-      return myFunc();
+      eval("this.myFunc = " + js);
+      return this.myFunc(node);
     },
     // checkLoop(node) {
     //   let slow = node;
