@@ -50,7 +50,7 @@ return false;
                   <div>Input:</div>
                   <textarea
                     class="playground-input-textarea"
-                    :value="input.head"
+                    v-model="input.value"
                   ></textarea>
                   <div>Type</div>
                   <select
@@ -74,7 +74,7 @@ return false;
                   </div>
                   <div
                     class="playground-run-btn"
-                    @click="createList(input.head)"
+                    @click="createInput(input.value)"
                   >
                     Run
                   </div>
@@ -99,7 +99,10 @@ return false;
 </template>
 
 <script>
+/* eslint-disable-next-line */
 import ListNode from "../classes/ListNode.js";
+/* eslint-disable-next-line */
+import TreeNode from "../classes/TreeNode.js";
 import vheader from "../components/header.vue";
 // import LinkedList from "../classes/LinkedList.js";
 
@@ -109,7 +112,7 @@ export default {
   data() {
     return {
       input: {
-        head: [3, 2, 0, 4],
+        value: "[3, 2, 0, 4]",
         pos: 1,
         type: "ListNode",
         types: ["ListNode", "TreeNode", "Default"],
@@ -138,7 +141,28 @@ export default {
   },
   mounted() {},
   methods: {
+    createInput(value) {
+      switch (this.input.type) {
+        case "ListNode":
+          this.createList(value);
+          break;
+        case "TreeNode":
+          this.createTree(value);
+          break;
+        case "Default":
+          this.codeInput(value);
+          break;
+      }
+    },
     createList(head) {
+      // first, we trans String to Array
+      if (head[0] !== "[" || head[head.length - 1] !== "]") {
+        this.result = "Invalid Input, please check before run.";
+        return;
+      }
+      head.slice(0, head.length - 1);
+      head = head.split(",");
+
       if (head.length < this.input.pos) {
         this.result = "error";
         return;
@@ -161,28 +185,18 @@ export default {
         }
         helper.next = indexNode;
       }
-      this.result = this.codeInput(startNode.next);
+      this.codeInput(startNode.next);
     },
+    createTree(root) {
+      console.log(root);
+    },
+
+    // After dealing with the input, finally run the code from the user.
     codeInput(node) {
       let js = document.getElementById("algorithmFunction").value;
       eval("this.myFunc = " + js);
-      return this.myFunc(node);
+      this.result = this.myFunc(node);
     },
-    // checkLoop(node) {
-    //   let slow = node;
-    //   let fast = node;
-
-    //   while (fast !== null && fast.next !== null) {
-    //     slow = slow.next;
-    //     fast = fast.next.next;
-    //     if (fast == slow) {
-    //       this.result = true;
-    //       return;
-    //     }
-    //   }
-    //   this.result = false;
-    //   return;
-    // },
   },
 };
 </script>
