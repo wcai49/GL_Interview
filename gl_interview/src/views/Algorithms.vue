@@ -99,9 +99,7 @@ return false;
 </template>
 
 <script>
-/* eslint-disable-next-line */
 import ListNode from "../classes/ListNode.js";
-/* eslint-disable-next-line */
 import TreeNode from "../classes/TreeNode.js";
 import vheader from "../components/header.vue";
 // import LinkedList from "../classes/LinkedList.js";
@@ -160,7 +158,7 @@ export default {
         this.result = "Invalid Input, please check before run.";
         return;
       }
-      head.slice(0, head.length - 1);
+      head = head.slice(0, head.length - 1);
       head = head.split(",");
 
       if (head.length < this.input.pos) {
@@ -171,7 +169,7 @@ export default {
       let helper = startNode;
 
       for (let i = 0; i < head.length; i++) {
-        let nextNode = new ListNode(head[i]);
+        let nextNode = new ListNode(parseInt(head[i]));
         helper.next = nextNode;
         helper = nextNode;
       }
@@ -188,7 +186,45 @@ export default {
       this.codeInput(startNode.next);
     },
     createTree(root) {
-      console.log(root);
+      if (root[0] !== "[" || root[root.length - 1] !== "]") {
+        this.result = "Invalid Input, please check before run.";
+        return;
+      }
+      root = root.slice(1, root.length - 1);
+      root = root.split(",");
+
+      if (root == []) {
+        this.result = "Input array is empty.";
+        return;
+      }
+      // so a array of [3, 2, 0, 4] is kinda like pre-order of a binary tree
+      let nodeArray = new Array();
+      for (let node of root) {
+        let curr_node = new TreeNode(parseInt(node));
+        nodeArray.push(curr_node);
+      }
+
+      let queue = new Array();
+      let input = nodeArray[0];
+      queue.push(nodeArray.shift());
+      while (queue.length && nodeArray.length) {
+        let length = queue.length;
+
+        for (let i = 0; i < length; i++) {
+          let curr = queue.shift();
+
+          if (nodeArray.length >= 2) {
+            curr.left = nodeArray[0];
+            curr.right = nodeArray[1];
+            queue.push(nodeArray.shift());
+            queue.push(nodeArray.shift());
+          } else if (nodeArray.length == 1) {
+            curr.left = nodeArray.shift();
+            break;
+          }
+        }
+      }
+      console.log(input);
     },
 
     // After dealing with the input, finally run the code from the user.
