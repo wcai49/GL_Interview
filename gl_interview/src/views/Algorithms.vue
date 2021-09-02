@@ -200,26 +200,42 @@ export default {
       // so a array of [3, 2, 0, 4] is kinda like pre-order of a binary tree
       let nodeArray = new Array();
       for (let node of root) {
-        let curr_node = new TreeNode(parseInt(node));
+        let curr_node = node == 'null' ? null :  new TreeNode(parseInt(node));
         nodeArray.push(curr_node);
       }
 
       let queue = new Array();
       let input = nodeArray[0];
       queue.push(nodeArray.shift());
+      
       while (queue.length && nodeArray.length) {
         let length = queue.length;
 
         for (let i = 0; i < length; i++) {
           let curr = queue.shift();
-
+          if(curr == null){
+            this.result = 'Your binary tree is not possible. Check please.'
+          }
           if (nodeArray.length >= 2) {
-            curr.left = nodeArray[0];
-            curr.right = nodeArray[1];
-            queue.push(nodeArray.shift());
-            queue.push(nodeArray.shift());
-          } else if (nodeArray.length == 1) {
-            curr.left = nodeArray.shift();
+            if(nodeArray[0] !== 'null'){
+              curr.left = nodeArray[0];
+              queue.push(nodeArray.shift());
+            }
+            else{
+              nodeArray.shift();
+            }
+            if(nodeArray[0] !== 'null'){
+              curr.right = nodeArray[0];
+              queue.push(nodeArray.shift());
+            }
+            else{
+              nodeArray.shift();
+            }
+            
+          } 
+                      // 如果只剩一个了
+            else if (nodeArray.length == 1) {
+            curr.left = nodeArray[0] == 'null' ? null : nodeArray.shift();
             break;
           }
         }
