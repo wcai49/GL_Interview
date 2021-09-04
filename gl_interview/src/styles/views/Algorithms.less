@@ -30,9 +30,9 @@
                     width: 100%;
                     resize: none;
                     background: @theme-color1;
-                    color: @theme-color4;
-                    font-size: @font-size-M;
-                    line-height: @font-size-M;
+                    color: #c5ffd1;
+                    font-size: @font-size-XL;
+                    line-height: @font-size-XL;
                     padding: @padding-M;
                 }
             }
@@ -72,6 +72,14 @@
                         resize: none;
                         height: @font-size-M;
                         line-height: @font-size-M;
+                        border: none;
+                        &.select{
+                            height: 1.5rem;
+                            width: 10rem;
+                        }
+                        &.second{
+                            width: 5rem;
+                        }
                     }
                 }
                 .playground-command-area{

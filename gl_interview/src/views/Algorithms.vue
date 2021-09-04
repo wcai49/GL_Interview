@@ -54,16 +54,16 @@ return false;
                   ></textarea>
                   <div>Type</div>
                   <select
-                    class="playground-input-textarea"
+                    class="playground-input-textarea select"
                     v-model="input.type"
                   >
                     <option v-for="(item, index) in input.types" :key="index">
                       {{ item }}
                     </option>
                   </select>
-                  <div>Loop</div>
+                  <div>Others</div>
                   <textarea
-                    class="playground-input-textarea"
+                    class="playground-input-textarea second"
                     v-model="input.pos"
                   ></textarea>
                 </div>
@@ -113,28 +113,28 @@ export default {
         value: "[3, 2, 0, 4]",
         pos: 1,
         type: "ListNode",
-        types: ["ListNode", "TreeNode", "Default"],
+        types: ["ListNode", "TreeNode", "String", "Number"],
       },
       result: null,
       myFunc: Function,
-      categories: [
-        {
-          name: "Linked List",
-          img: "./LinkedList_Entry.png",
-        },
-        {
-          name: "Binary Tree",
-          img: "./BinaryTree_Entry.png",
-        },
-        {
-          name: "Double Pointers",
-          img: "./DoublePointers_Entry.png",
-        },
-        {
-          name: "Dynamic Programming",
-          img: "./DynamicProgramming_Entry.png",
-        },
-      ],
+      // categories: [
+      //   {
+      //     name: "Linked List",
+      //     img: "./LinkedList_Entry.png",
+      //   },
+      //   {
+      //     name: "Binary Tree",
+      //     img: "./BinaryTree_Entry.png",
+      //   },
+      //   {
+      //     name: "Double Pointers",
+      //     img: "./DoublePointers_Entry.png",
+      //   },
+      //   {
+      //     name: "Dynamic Programming",
+      //     img: "./DynamicProgramming_Entry.png",
+      //   },
+      // ],
     };
   },
   mounted() {},
@@ -147,7 +147,13 @@ export default {
         case "TreeNode":
           this.createTree(value);
           break;
-        case "Default":
+        case "String":
+          this.codeInput(value);
+          break;
+        case "Number":
+          this.codeInput(parseInt(value));
+          break;
+        default:
           this.codeInput(value);
           break;
       }
@@ -200,47 +206,45 @@ export default {
       // so a array of [3, 2, 0, 4] is kinda like pre-order of a binary tree
       let nodeArray = new Array();
       for (let node of root) {
-        let curr_node = node == 'null' ? null :  new TreeNode(parseInt(node));
+        let curr_node = node == "null" ? null : new TreeNode(parseInt(node));
         nodeArray.push(curr_node);
       }
 
       let queue = new Array();
       let input = nodeArray[0];
       queue.push(nodeArray.shift());
-      
+
       while (queue.length && nodeArray.length) {
         let length = queue.length;
 
         for (let i = 0; i < length; i++) {
           let curr = queue.shift();
-          if(curr == null){
-            this.result = 'Your binary tree is not possible. Check please.'
+          if (curr == null) {
+            this.result = "Your binary tree is not possible. Check please.";
           }
           if (nodeArray.length >= 2) {
-            if(nodeArray[0] !== 'null'){
+            if (nodeArray[0] !== "null") {
               curr.left = nodeArray[0];
               queue.push(nodeArray.shift());
-            }
-            else{
+            } else {
               nodeArray.shift();
             }
-            if(nodeArray[0] !== 'null'){
+            if (nodeArray[0] !== "null") {
               curr.right = nodeArray[0];
               queue.push(nodeArray.shift());
-            }
-            else{
+            } else {
               nodeArray.shift();
             }
-            
-          } 
-                      // 如果只剩一个了
-            else if (nodeArray.length == 1) {
-            curr.left = nodeArray[0] == 'null' ? null : nodeArray.shift();
+          }
+          // 如果只剩一个了
+          else if (nodeArray.length == 1) {
+            curr.left = nodeArray[0] == "null" ? null : nodeArray.shift();
             break;
           }
         }
       }
       console.log(input);
+      this.codeInput(input);
     },
 
     // After dealing with the input, finally run the code from the user.
