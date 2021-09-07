@@ -5,7 +5,9 @@
         <vheader :currentIndex="0"></vheader>
       </el-header>
       <el-main>
-        <div class="index-main-area"></div>
+        <div class="index-main-area">
+          <iframe class="unity-demo-area" src="./unitydemo.html"></iframe>
+        </div>
       </el-main>
     </el-container>
   </div>
