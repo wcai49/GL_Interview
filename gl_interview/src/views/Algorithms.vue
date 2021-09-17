@@ -102,7 +102,7 @@ return false;
 import ListNode from "../classes/ListNode.js";
 import TreeNode from "../classes/TreeNode.js";
 import vheader from "../components/header.vue";
-import { checkValid, stringToArray } from "../functions/array.js";
+import { checkValid, stringToNumArray } from "../functions/array.js";
 // import LinkedList from "../classes/LinkedList.js";
 
 export default {
@@ -229,21 +229,21 @@ export default {
           }
         }
       }
-      console.log(input);
       this.codeInput(input);
     },
 
-    createArray(arr_str){
+    createArray(arr_str) {
       // judge if this is a closed array:
       // similar to leetcode question: () [] {}, we need to see whether [] is in pairs.
+
       // first, users might mis-type some extra blanks (spaces)
-      arr_str = arr_str.replaceAll(' ', '');
-      if(!checkValid(arr_str)){
+      arr_str = arr_str.replaceAll(" ", "");
+      if (!checkValid(arr_str)) {
         this.result = "Please check your array, it is not closed.";
         return;
       }
-      
-      let input = stringToArray(arr_str);
+
+      let input = stringToNumArray(arr_str);
       this.codeInput(input);
     },
 
@@ -252,8 +252,7 @@ export default {
       let js = document.getElementById("algorithmFunction").value;
       eval("this.myFunc = " + js);
       this.result = this.myFunc(node);
-      
+    },
   },
-  }
 };
 </script>

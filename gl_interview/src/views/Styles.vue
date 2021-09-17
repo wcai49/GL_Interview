@@ -9,8 +9,7 @@
             <textarea id="css" v-model="cssContent"></textarea>
             <textarea id="js" v-model="javascriptContent"></textarea>
           </div>
-          <iframe id="codeResult">
-          </iframe>
+          <iframe id="codeResult"> </iframe>
         </div>
       </el-main>
     </el-container>
@@ -48,14 +47,14 @@ export default {
       let css = document.getElementById("css");
       let js = document.getElementById("js");
       let code = document.getElementById("codeResult").contentWindow.document;
-        code.open();
-        document.body.onkeyup = function() {
+      code.open();
+      document.body.onkeyup = function () {
         code.writeln(
           // eslint-disable-next-line
           `${html.value}<style>${css.value}</style><script>${js.value}<\/script>`
         );
         code.close();
-        }
+      };
     },
   },
 };
