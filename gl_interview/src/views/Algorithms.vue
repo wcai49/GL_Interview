@@ -102,6 +102,7 @@ return false;
 import ListNode from "../classes/ListNode.js";
 import TreeNode from "../classes/TreeNode.js";
 import vheader from "../components/header.vue";
+import { checkValid, stringToArray } from "../functions/array.js";
 // import LinkedList from "../classes/LinkedList.js";
 
 export default {
@@ -113,28 +114,10 @@ export default {
         value: "[3, 2, 0, 4]",
         pos: 1,
         type: "ListNode",
-        types: ["ListNode", "TreeNode", "String", "Number"],
+        types: ["ListNode", "TreeNode", "Array", "String", "Number"],
       },
       result: null,
       myFunc: Function,
-      // categories: [
-      //   {
-      //     name: "Linked List",
-      //     img: "./LinkedList_Entry.png",
-      //   },
-      //   {
-      //     name: "Binary Tree",
-      //     img: "./BinaryTree_Entry.png",
-      //   },
-      //   {
-      //     name: "Double Pointers",
-      //     img: "./DoublePointers_Entry.png",
-      //   },
-      //   {
-      //     name: "Dynamic Programming",
-      //     img: "./DynamicProgramming_Entry.png",
-      //   },
-      // ],
     };
   },
   mounted() {},
@@ -146,6 +129,9 @@ export default {
           break;
         case "TreeNode":
           this.createTree(value);
+          break;
+        case "Array":
+          this.createArray(value);
           break;
         case "String":
           this.codeInput(value);
@@ -247,12 +233,27 @@ export default {
       this.codeInput(input);
     },
 
+    createArray(arr_str){
+      // judge if this is a closed array:
+      // similar to leetcode question: () [] {}, we need to see whether [] is in pairs.
+      // first, users might mis-type some extra blanks (spaces)
+      arr_str = arr_str.replaceAll(' ', '');
+      if(!checkValid(arr_str)){
+        this.result = "Please check your array, it is not closed.";
+        return;
+      }
+      
+      let input = stringToArray(arr_str);
+      this.codeInput(input);
+    },
+
     // After dealing with the input, finally run the code from the user.
     codeInput(node) {
       let js = document.getElementById("algorithmFunction").value;
       eval("this.myFunc = " + js);
       this.result = this.myFunc(node);
-    },
+      
   },
+  }
 };
 </script>
