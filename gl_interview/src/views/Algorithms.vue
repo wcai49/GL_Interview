@@ -41,7 +41,34 @@ return false;
                     looped or not.
                   </div>
                   <div class="question-desc">Example:</div>
-                  <img src="/circularlinkedlist.png" />
+                  <!-- <img src="/circularlinkedlist.png" /> -->
+                  <svg
+                    class="question-svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    :height="svgHeight + 'px'"
+                  >
+                    <circle
+                      v-for="(item, index) in svgNodes"
+                      :key="index"
+                      :cx="80 * index + svgGap"
+                      :cy="svgHeight / 2"
+                      r="30"
+                      style="
+                        fill-opacity: 0;
+                        stroke: rgb(54, 107, 250);
+                        stroke-width: 1.5;
+                      "
+                    />
+                    <text
+                      v-for="(item, index) in svgNodes"
+                      :key="index"
+                      :x="80 * index + svgGap"
+                      :y="svgHeight / 2"
+                      style="stroke: rgb(0, 0, 0); fill-opacity: 1"
+                    >
+                      {{ item.val }}
+                    </text>
+                  </svg>
                   <div class="question-desc">
                     result: true. Last node(4) points to previous node(2).
                   </div>
@@ -82,16 +109,6 @@ return false;
               </div>
             </div>
           </div>
-          <!-- <div class="algorithms-container">
-      <div
-        class="algorithms-categories"
-        v-for="(item, index) of categories"
-        :key="index"
-      >
-        <div class="algorithms-categories-title">{{ item.name }}</div>
-        <img class="algorithms-categories-img" :src="item.img" />
-      </div>
-    </div> -->
         </div>
       </el-main>
     </el-container>
@@ -112,10 +129,13 @@ export default {
     return {
       input: {
         value: "[3, 2, 0, 4]",
-        pos: 1,
+        pos: -1,
         type: "ListNode",
         types: ["ListNode", "TreeNode", "Array", "String", "Number"],
       },
+      svgHeight: 0,
+      svgNodes: [],
+      svgGap: 50,
       result: null,
       myFunc: Function,
     };
@@ -150,9 +170,8 @@ export default {
         this.result = "Invalid Input, please check before run.";
         return;
       }
-      head = head.slice(0, head.length - 1);
+      head = head.slice(1, head.length - 1);
       head = head.split(",");
-
       if (head.length < this.input.pos) {
         this.result = "error";
         return;
@@ -175,6 +194,7 @@ export default {
         }
         helper.next = indexNode;
       }
+      this.createListSvg(startNode.next);
       this.codeInput(startNode.next);
     },
     createTree(root) {
@@ -252,6 +272,14 @@ export default {
       let js = document.getElementById("algorithmFunction").value;
       eval("this.myFunc = " + js);
       this.result = this.myFunc(node);
+    },
+    createListSvg(node) {
+      this.svgHeight = 176;
+      let head = node;
+      while (head) {
+        this.svgNodes.push(head);
+        head = head.next;
+      }
     },
   },
 };

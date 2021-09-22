@@ -30,7 +30,7 @@ export default {
     return {
       menus: [
         {
-          title: "Me Myself",
+          title: "3D, Very 3D",
           path: "/",
         },
         // {
