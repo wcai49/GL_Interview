@@ -62,16 +62,14 @@ return false;
                     <text
                       v-for="(item, index) in svgNodes"
                       :key="index"
-                      :x="80 * index + svgGap"
-                      :y="svgHeight / 2"
+                      :x="80 * index + svgGap - 4"
+                      :y="svgHeight / 2 + 3"
+                      font-size="16px"
                       style="stroke: rgb(0, 0, 0); fill-opacity: 1"
                     >
                       {{ item.val }}
                     </text>
                   </svg>
-                  <div class="question-desc">
-                    result: true. Last node(4) points to previous node(2).
-                  </div>
                 </div>
                 <div class="playground-right-input">
                   <div>Input:</div>
@@ -274,8 +272,10 @@ export default {
       this.result = this.myFunc(node);
     },
     createListSvg(node) {
+      // by default, we assume there is only one line of list node, so the height will be constant
       this.svgHeight = 176;
       let head = node;
+      this.svgNodes = [];
       while (head) {
         this.svgNodes.push(head);
         head = head.next;
