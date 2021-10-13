@@ -33,10 +33,6 @@ export default {
           title: "3D, Very 3D",
           path: "/",
         },
-        // {
-        //   title: "iLearn",
-        //   path: "/iLearnPage",
-        // },
         {
           title: "Styles",
           path: "/stylesPage",

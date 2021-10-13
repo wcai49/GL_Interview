@@ -1,13 +1,15 @@
-import { createApp } from "vue";
-import ElementPlus from "element-plus";
-import "element-plus/lib/theme-chalk/index.css";
-import App from "./App.vue";
-import router from "./router";
-// import 'fullpage.js/vendors/scrolloverflow.js';
-// import './fullpage.scrollHorizontally.min';
+import Vue from 'vue'
+import App from './App.vue'
+import VueRouter from "vue-router";
+import router from './router';
 import "./styles/app.less";
+import ElementUI from 'element-ui';
 
-const app = createApp(App);
-app.use(ElementPlus);
-app.use(router);
-app.mount("#app");
+
+Vue.config.productionTip = false
+Vue.use(VueRouter);
+Vue.use(ElementUI);
+new Vue({
+  render: h => h(App),
+  router: router,
+}).$mount('#app')

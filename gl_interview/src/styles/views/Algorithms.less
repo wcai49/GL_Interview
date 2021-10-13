@@ -35,6 +35,14 @@
                     line-height: @font-size-XL;
                     padding: @padding-M;
                 }
+                .vue-codemirror{
+                    width: 100%;
+                    height: 100%;
+                    font-size: @font-size-L;
+                    .CodeMirror{
+                        height: 100%;
+                    }
+                }
             }
             .playground-right{
                 width: 40%;
@@ -52,9 +60,15 @@
                         border-bottom: solid @border-M @theme-color2;
                     } 
                     .question-desc{
-                        font-size: @font-size-M;
+                        width: calc(100% - 2*@padding-S);
+                        height: 10rem;
+                        font-size: @font-size-L;
+                        color: @theme-color2;
                         margin-top: @margin-S;
+                        padding: @padding-S;
                         font-style: italic;
+                        resize: none;
+                        border: none;
                     }
                     .question-svg{
                         width: 100%;

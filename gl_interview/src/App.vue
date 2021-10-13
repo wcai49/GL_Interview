@@ -1,15 +1,8 @@
 <template>
-  <div>
-    <router-view class="view-pages"></router-view>
+  <div id="app">
+    <router-view />
   </div>
 </template>
-
-<script>
-export default {
-  name: "App",
-  components: {},
-};
-</script>
 
 <style lang="less">
 html,

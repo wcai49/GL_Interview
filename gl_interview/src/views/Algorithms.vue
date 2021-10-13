@@ -1,75 +1,29 @@
 <template>
   <div class="algorithms-page">
-    <el-container>
-      <el-header>
+    <el-container class="gl-interview">
+      <el-header height="48px">
         <vheader :currentIndex="2"></vheader>
       </el-header>
       <el-main>
         <div class="algorithm-main-area">
           <div class="algorithms-playground">
             <div class="algorithms-recent-hard">
-              Findout whether the LinkedList is a looped one or not. This is
-              easy. Try to make it runnable in your project. So you will have to
-              write a linkedlist class, node class etc.,
+              Algorithm is a lot of fun to play with. Click run and you will see
+              SVG spawned(only for simple linked-list so far).
             </div>
             <div class="playground-container">
               <div class="playground-left">
-                <textarea class="algorithm-code-input" id="algorithmFunction">
-function checkLoop(head) {
-let slow = head;
-let fast = head;
-
-while (fast !== null && fast.next !== null) {
-  slow = slow.next;
-  fast = fast.next.next;
-  if (fast == slow) {
-    return true;
-  }
-}
-return false;
-              }</textarea
-                >
+                <codemirror
+                  v-model="codeInputText"
+                  :options="codemirrorOptions"
+                ></codemirror>
               </div>
               <div class="playground-right">
                 <div class="playground-right-figure">
-                  <div class="question-title">Problem:</div>
-                  <div class="question-desc">
-                    Given a Linked-List, it might or might not be a looped
-                    Linked-List. For example, if it a looped one, the last node
-                    of the list will randomly point to the previous node.
-                    Provide a function, return boolean value for whether it is
-                    looped or not.
-                  </div>
-                  <div class="question-desc">Example:</div>
-                  <!-- <img src="/circularlinkedlist.png" /> -->
-                  <svg
-                    class="question-svg"
-                    xmlns="http://www.w3.org/2000/svg"
-                    :height="svgHeight + 'px'"
-                  >
-                    <circle
-                      v-for="(item, index) in svgNodes"
-                      :key="index"
-                      :cx="80 * index + svgGap"
-                      :cy="svgHeight / 2"
-                      r="30"
-                      style="
-                        fill-opacity: 0;
-                        stroke: rgb(54, 107, 250);
-                        stroke-width: 1.5;
-                      "
-                    />
-                    <text
-                      v-for="(item, index) in svgNodes"
-                      :key="index"
-                      :x="80 * index + svgGap - 4"
-                      :y="svgHeight / 2 + 3"
-                      font-size="16px"
-                      style="stroke: rgb(0, 0, 0); fill-opacity: 1"
-                    >
-                      {{ item.val }}
-                    </text>
-                  </svg>
+                  <div class="question-title">Question:</div>
+                  <textarea class="question-desc"> </textarea>
+                  <div class="question-title">Figure:</div>
+                  <create-svg :node="currentnode"> </create-svg>
                 </div>
                 <div class="playground-right-input">
                   <div>Input:</div>
@@ -117,23 +71,32 @@ return false;
 import ListNode from "../classes/ListNode.js";
 import TreeNode from "../classes/TreeNode.js";
 import vheader from "../components/header.vue";
+import createSvg from "../components/createSvg.vue";
 import { checkValid, stringToNumArray } from "../functions/array.js";
-// import LinkedList from "../classes/LinkedList.js";
+import { codemirror } from "vue-codemirror";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/javascript/javascript.js";
 
 export default {
   name: "Algorithms",
-  components: { vheader },
+  components: { vheader, codemirror, createSvg },
   data() {
     return {
+      codeInputText: "function myFunc(input){ \n \n}",
+      codemirrorOptions: {
+        lineNumbers: true,
+        line: true,
+        theme: "material",
+        mode: "javascript",
+      },
       input: {
         value: "[3, 2, 0, 4]",
         pos: -1,
         type: "ListNode",
         types: ["ListNode", "TreeNode", "Array", "String", "Number"],
       },
-      svgHeight: 0,
-      svgNodes: [],
-      svgGap: 50,
+      currentnode: null,
       result: null,
       myFunc: Function,
     };
@@ -192,7 +155,7 @@ export default {
         }
         helper.next = indexNode;
       }
-      this.createListSvg(startNode.next);
+      this.currentnode = startNode.next;
       this.codeInput(startNode.next);
     },
     createTree(root) {
@@ -266,20 +229,9 @@ export default {
     },
 
     // After dealing with the input, finally run the code from the user.
-    codeInput(node) {
-      let js = document.getElementById("algorithmFunction").value;
-      eval("this.myFunc = " + js);
-      this.result = this.myFunc(node);
-    },
-    createListSvg(node) {
-      // by default, we assume there is only one line of list node, so the height will be constant
-      this.svgHeight = 176;
-      let head = node;
-      this.svgNodes = [];
-      while (head) {
-        this.svgNodes.push(head);
-        head = head.next;
-      }
+    codeInput(input) {
+      eval("this.myFunc = " + this.codeInputText);
+      this.result = this.myFunc(input);
     },
   },
 };

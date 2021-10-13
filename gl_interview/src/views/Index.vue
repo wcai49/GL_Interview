@@ -1,7 +1,7 @@
 <template>
   <div class="index-self-page">
-    <el-container>
-      <el-header>
+    <el-container class="gl-interview">
+      <el-header height="48px">
         <vheader :currentIndex="0"></vheader>
       </el-header>
       <el-main>

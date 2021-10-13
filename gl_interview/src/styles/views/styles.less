@@ -2,33 +2,23 @@
     .styles-main-area{
         height: 100%;
         background: @theme-color2;
-        text-align: center;
         display: flex;
         flex-direction: column;
         .online-ides{
             display: flex;
-            textarea{
-                width: 100%;
+            position: relative;
+            justify-content: space-between;
+            width: 100%;
+
+            .codemirror-container{
+                width: calc(100vw / 3);
+                .codemirror{
                 min-height: 15.625rem;
-                overflow: scroll;
-                margin: auto;
-                resize: none;
                 color: #c5ffd1;
                 font-size: @font-size-L;
-                background-color:rgb(0, 0, 0);
             }
-            // #html{
-            //     background: url('/html_background.png') no-repeat center;
-            //     background-size: cover;
-            // }
-            // #css{
-            //     background: url('/css_background.png') no-repeat center;
-            //     background-size: cover;
-            // }
-            // #js{
-            //     background: url('/js_background.png') no-repeat center;
-            //     background-size: cover;
-            // }
+            }
+            
         }
         iframe{
             flex: 1;
