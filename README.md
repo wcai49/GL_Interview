@@ -1,4 +1,6 @@
 # GL_Interview
+**Currently in this branch, the project was created by vue3-cli, but the whole code were just like vue2.js. Maybe I will finish this branch if I have time.**
+
 A little vue 3.0 project for Frontend developer to use during job interviews.
 
 Currently I am preparing my job interview with Microsoft in Suzhou, China. During my last interview, they asked me to do such things:
