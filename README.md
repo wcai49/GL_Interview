@@ -16,7 +16,7 @@ As a result of that, this project was created for helping Frontend-engineers to 
 
 2. HTML-CSS-JAVASCRIPT: This page contains 3 online-IDEs for you to finish your frontend tests. It is common to see this kind of interview problem that they will give you a image of some box structrues with different paddings/margins/background-colors, etc., This is the place you can use!
 
-3. Algorithms: The algorithms page provides a huge oneline-IDE for you to code and solve the algorithm problem during the interview. On the right area, you can enter the question's descriptions. Sometimes this is helpful, since ususally you will hear the question for only one time. For the bottom area, you should choose the input type for your function (strign, array, listnode, treenode, etc.,). Click [run] button, it will execute your function in the IDE with Input you chose and entered.
+3. Algorithms: The algorithms page provides a huge oneline-IDE for you to code and solve the algorithm problem during the interview. On the right area, you can enter the question's descriptions. Sometimes this is helpful, since ususally you will hear the question for only one time. For the bottom area, you should choose the input type for your function (string, array, listnode, treenode, etc.,). Click [run] button, it will execute your function in the IDE with Input you chose and entered.
 
 ## Some other words:
 I do not know how much time it will take for me to finish this project, as a member of Huawei and an owner of a Border Collie dog, time is always being tough. Anyways, good luck to anyone who are looking for a better job, better life.
