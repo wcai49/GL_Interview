@@ -230,8 +230,40 @@ export default {
 
     // After dealing with the input, finally run the code from the user.
     codeInput(input) {
-      eval("this.myFunc = " + this.codeInputText);
-      this.result = this.myFunc(input);
+      // eval("this.myFunc = " + this.codeInputText);
+      // this.result = this.myFunc(input);
+      if (input == null || input.length < 2) {
+        this.result = input;
+      }
+      this.process(input, 0, input.length - 1);
+      this.result = input;
+    },
+    process(arr, L, R) {
+      if (L == R) {
+        return;
+      }
+      let mid = Math.floor((R - L) / 2) + L;
+      this.process(arr, L, mid);
+      this.process(arr, mid + 1, R);
+      this.merge(arr, L, mid, R);
+    },
+    merge(arr, L, M, R) {
+      let result = new Array(R - L + 1);
+      let index = 0;
+      let p1 = L;
+      let p2 = M + 1;
+      while (p1 <= M && p2 <= R) {
+        result[index++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
+      }
+      while (p1 <= M) {
+        result[index++] = arr[p1++];
+      }
+      while (p2 <= R) {
+        result[index++] = arr[p2++];
+      }
+      for (let i = 0; i < result.length; i++) {
+        arr[L + i] = result[i];
+      }
     },
   },
 };
