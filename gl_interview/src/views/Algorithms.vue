@@ -55,6 +55,9 @@
                     Result:
                     <p>{{ result }}</p>
                   </div>
+                  <div class="playground-right-runtime">
+                    Time used: {{ timer }} us.
+                  </div>
                   <div
                     class="playground-run-btn"
                     @click="createInput(input.value)"
@@ -105,6 +108,7 @@ export default {
       },
       currentnode: null,
       result: null,
+      timer: 0,
       myFunc: Function,
     };
   },
@@ -251,7 +255,10 @@ export default {
     // After dealing with the input, finally run the code from the user.
     codeInput(input) {
       eval("this.myFunc = " + this.codeInputText);
+      let timer_start = performance.now();
       this.handleResult(this.myFunc(input));
+      let timer_end = performance.now();
+      this.timer = Math.floor((timer_end - timer_start) * 1000);
     },
     handleResult(result) {
       switch (this.output.type) {
