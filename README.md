@@ -23,3 +23,9 @@ I do not know how much time it will take for me to finish this project, as a mem
 
 Wenlei Cai
 2021.08.05
+
+## Update:
+I have successfully passed the interview with Microsoft and I am about to be a member of Microsoft soon! During those 6 rounds of interviews, this project really helped a lot! I wrote several Binary Tree algorithms problems, numbers of Array problems, Linked list, etc., on this project, and every time it worked. This project impressed many of them. I am glad that I have developed such a thing to help myself for the interview, and I wish all the best for people who are trying to find a job.
+
+Wenlei Cai
+2021.12.23
