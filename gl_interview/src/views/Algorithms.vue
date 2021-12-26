@@ -31,7 +31,7 @@
                     class="playground-input-textarea"
                     v-model="input.value"
                   ></textarea>
-                  <div>Type</div>
+                  <div>Input Type</div>
                   <select
                     class="playground-input-textarea select"
                     v-model="input.type"
@@ -40,16 +40,23 @@
                       {{ item }}
                     </option>
                   </select>
-                  <div>Others</div>
-                  <textarea
-                    class="playground-input-textarea second"
-                    v-model="input.pos"
-                  ></textarea>
+                  <div>Output Type</div>
+                  <select
+                    class="playground-input-textarea select"
+                    v-model="output.type"
+                  >
+                    <option v-for="(item, index) in output.types" :key="index">
+                      {{ item }}
+                    </option>
+                  </select>
                 </div>
                 <div class="playground-command-area">
                   <div class="playground-right-result">
                     Result:
                     <p>{{ result }}</p>
+                  </div>
+                  <div class="playground-right-runtime">
+                    Time used: {{ timer }} us.
                   </div>
                   <div
                     class="playground-run-btn"
@@ -92,12 +99,16 @@ export default {
       },
       input: {
         value: "[3, 2, 0, 4]",
-        pos: -1,
+        type: "ListNode",
+        types: ["ListNode", "TreeNode", "Array", "String", "Number"],
+      },
+      output: {
         type: "ListNode",
         types: ["ListNode", "TreeNode", "Array", "String", "Number"],
       },
       currentnode: null,
       result: null,
+      timer: 0,
       myFunc: Function,
     };
   },
@@ -160,16 +171,16 @@ export default {
     },
     createTree(root) {
       if (root[0] !== "[" || root[root.length - 1] !== "]") {
-        this.result = "Invalid Input, please check before run.";
+        console.log("Invalid Input, please check before run.");
         return;
       }
       root = root.slice(1, root.length - 1);
       root = root.split(",");
 
       if (root == []) {
-        this.result = "Input array is empty.";
         return;
       }
+      // let input = this.spawnTree(root);
       // so a array of [3, 2, 0, 4] is kinda like pre-order of a binary tree
       let nodeArray = new Array();
       for (let node of root) {
@@ -212,7 +223,20 @@ export default {
       }
       this.codeInput(input);
     },
-
+    // spawnTree(queue) {
+    //   if (queue.length == 0) {
+    //     return null;
+    //   }
+    //   let string = queue.shift();
+    //   if (string == "null") {
+    //     return null;
+    //   }
+    //   let node = new TreeNode(parseInt(string));
+    //   node.left = this.spawnTree(queue);
+    //   node.right = this.spawnTree(queue);
+    //   console.log(node);
+    //   return node;
+    // },
     createArray(arr_str) {
       // judge if this is a closed array:
       // similar to leetcode question: () [] {}, we need to see whether [] is in pairs.
@@ -231,24 +255,27 @@ export default {
     // After dealing with the input, finally run the code from the user.
     codeInput(input) {
       eval("this.myFunc = " + this.codeInputText);
+      let timer_start = performance.now();
       this.handleResult(this.myFunc(input));
+      let timer_end = performance.now();
+      this.timer = Math.floor((timer_end - timer_start) * 1000);
     },
-    handleResult(result){
-      switch(this.input.type){
-        case 'ListNode':{
+    handleResult(result) {
+      switch (this.output.type) {
+        case "ListNode": {
           this.result = result.printList();
           break;
         }
-        case 'TreeNode': {
-          this.result = result.printPreOrder();
+        case "TreeNode": {
+          this.result = result.printBFS();
           break;
         }
-        default : {
+        default: {
           this.result = result;
           break;
         }
       }
-    }
+    },
     // process(arr, L, R) {
     //   if (L == R) {
     //     return;
