@@ -7,19 +7,20 @@
     >
       <g v-for="(item, index) in svgNodes" :key="index">
         <circle
-          :cx="80 * index + svgGap"
+          :cx="150 * index + svgGap"
           :cy="svgHeight / 2"
           r="30"
           style="fill-opacity: 0; stroke: rgb(54, 107, 250); stroke-width: 1.5"
         ></circle>
         <text
-          :x="80 * index + svgGap - 4"
+          :x="150 * index + svgGap - 4"
           :y="svgHeight / 2 + 3"
           font-size="16px"
           style="stroke: rgb(0, 0, 0); fill-opacity: 1"
         >
           {{ item.val }}
         </text>
+         <path class="cool" :d="'M' + 150*index + svgGap + ' ' +svgHeight / 2 + 3 + 'L' + 200*index + svgGap + ' ' + svgHeight / 2 + 3" ></path>
       </g>
     </svg>
   </div>
