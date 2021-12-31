@@ -27,14 +27,9 @@ As a result of that, this project was created for helping Frontend Engineers to 
 ## Some other words:
 I do not know how much time it will take for me to finish this project, as a member of Huawei and an owner of a Border Collie dog, time is always being tough. Anyways, good luck to anyone who are looking for a better job, better life.
 
-Wenlei Cai 蔡文磊\
 2021.08.05
 
 ## Update:
 I have successfully passed the interview with Microsoft and I am about to be a member of Microsoft soon! During those 6 rounds of interviews, this project really helped a lot! I wrote several Binary Tree algorithms problems, numbers of Array problems, Linked list, etc., on this project, and every time it worked. This project impressed many of them. I am glad that I have developed such a thing to help myself for the interview, and I wish all the best for people who are trying to get a better life!
 
-Wenlei Cai 蔡文磊\
 2021.12.23
-
-## 澄清
-本来是开个帖留个纪念，顺便我希望理性地讨论我司的工作氛围和福利问题，有人看完说我在**炫富 || 贬低我司ds太多 || 凡尔赛自己下班早**，除了无语我找不到其他词来形容。 希望大家事事顺心，面经之类的脉脉上很多，各种通信软件烦请勿扰，影响到我卡尔刷新13连了。祝好。
