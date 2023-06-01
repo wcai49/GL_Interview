@@ -1,7 +1,6 @@
-# GL_Interview
-## Background
+# Project Introduction
+
 This is a Vue 2.0 project to help WEB Software Engineers who are looking for a new job.
-___
 
 Currently I am preparing my job interview with Microsoft. During my last interview with one project group of MS, they asked me to do such things:
 
